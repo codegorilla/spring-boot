@@ -1,22 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::section})}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Spring Boot Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Spring Boot Index</title>
 </head>
 <body>
-
-    <div th:replace="~{fragments/header :: header}"></div>
-
-    <div class="container">
-        <h1>Welcome to Spring Boot!</h1>
+    <section>
+        <h1>Welcome to Spring Boot Dashboard!</h1>
         <p>This is my first Spring Boot HTML page.</p>
         <button class="btn btn-primary" onclick="alert('Hello Spring Boot!')">
             Click Me
         </button>
-    </div>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    </section>
 </body>
 </html>
