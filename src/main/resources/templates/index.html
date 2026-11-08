@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,42 +8,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-
-            <!-- Brand -->
-            <a class="navbar-brand" href="/">Baritone</a>
-
-            <!-- Mobile toggle -->
-            <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarContent"
-                    aria-controls="navbarContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Navbar content -->
-            <div class="collapse navbar-collapse" id="navbarContent">
-
-                <!-- Right-aligned buttons -->
-                <div class="ms-auto d-flex gap-2">
-                    <a href="/login" class="btn btn-outline-primary">
-                        Sign In
-                    </a>
-
-                    <a href="/signup" class="btn btn-primary">
-                        Sign Up
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </nav>
+    <div th:replace="~{fragments/header :: header}"></div>
 
     <div class="container">
         <h1>Welcome to Spring Boot!</h1>
