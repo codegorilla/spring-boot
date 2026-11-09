@@ -20,7 +20,9 @@ public class MainController {
   @GetMapping("/products")
   @ResponseBody
   public String products () {
-    return "Here are your products!" + productService.getProducts().get(0).getName();
+    var x = productService.getProducts();
+    System.out.println(x);
+    return "Here are your products!";// + productService.getProducts().get(0).getName();
   }
 
   @GetMapping("/goodbye")
