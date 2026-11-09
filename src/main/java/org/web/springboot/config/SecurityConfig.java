@@ -19,6 +19,7 @@ public class SecurityConfig {
     configureAuthorization(http);
     configureLogin(http);
     configureLogout(http);
+    configureH2Console(http);
     return http.build();
   }
 
@@ -44,5 +45,14 @@ public class SecurityConfig {
       .logoutSuccessUrl("/")
       .permitAll()
     );
+  }
+
+  private void configureH2Console (HttpSecurity http) throws Exception {
+    // Bypass CSRF tokens for H2 console actions and allow browser to render
+    // H2's internal frame layout. The former is safe for local development;
+    // the latter is protected by a very restrictive CORS setting.
+    http
+      .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
+      .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()));
   }
 }

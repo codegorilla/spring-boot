@@ -1,15 +1,26 @@
 package org.web.springboot.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.web.springboot.service.ProductService;
 
 @Controller
 public class MainController {
 
+  @Autowired
+  ProductService productService;
+
   @GetMapping("/")
   public String helloWorld() {
     return "index";
+  }
+
+  @GetMapping("/products")
+  @ResponseBody
+  public String products () {
+    return "Here are your products!" + productService.getProducts().get(0).getName();
   }
 
   @GetMapping("/goodbye")
@@ -24,7 +35,6 @@ public class MainController {
   }
 
   @GetMapping("/dashboard")
-  @ResponseBody
   public String dashboard() {
     return "dashboard";
   }

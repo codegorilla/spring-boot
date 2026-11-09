@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::section})}">
+<head>
+    <title>SB Dashboard</title>
+</head>
+<body>
+    <section>
+        <h1>Welcome to Spring Boot Dashboard!</h1>
+        <p>This is my first Spring Boot HTML page.</p>
+        <button class="btn btn-primary" onclick="alert('Hello Spring Boot!')">
+            Click Me
+        </button>
+    </section>
+</body>
+</html>
