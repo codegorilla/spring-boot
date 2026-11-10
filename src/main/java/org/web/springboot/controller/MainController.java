@@ -22,7 +22,10 @@ public class MainController {
   public String products () {
     var x = productService.getProducts();
     System.out.println(x);
-    return "Here are your products!";// + productService.getProducts().get(0).getName();
+    return "Here are your products!\n" +
+    productService.getProducts().stream()
+      .filter(product -> product.getId() > 1)
+      .toList();
   }
 
   @GetMapping("/goodbye")
