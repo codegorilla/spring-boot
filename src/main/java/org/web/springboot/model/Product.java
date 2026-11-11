@@ -1,19 +1,28 @@
 package org.web.springboot.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import org.springframework.security.core.parameters.P;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "products")
 public class Product {
 
   @Id
-  private int id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+  @Column(nullable = false)
   private String name;
 
-  public Product() {}
+  @Column(length = 32)
+  private String shortName;
 
-  public Product(int id, String name) {
+  @Enumerated(EnumType.STRING)
+  @Column(name = "product_type", nullable = false, length = 32)
+  private ProductType type;
+
+  public Product () {}
+
+  public Product (Long id, String name) {
     this.id = id;
     this.name = name;
   }
@@ -22,7 +31,7 @@ public class Product {
     this.name = name;
   }
 
-  public int getId () {
+  public Long getId () {
     return id;
   }
 
@@ -32,6 +41,22 @@ public class Product {
 
   public void setName (String name) {
     this.name = name;
+  }
+
+  public String getShortName () {
+    return shortName;
+  }
+
+  public void setShortName (String shortName) {
+    this.shortName = shortName;
+  }
+
+  public ProductType getProductType () {
+    return type;
+  }
+
+  public void setProductType (ProductType type) {
+    this.type = type;
   }
 
   @Override

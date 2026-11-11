@@ -7,11 +7,46 @@
 </head>
 <body>
     <section>
-        <h1>Welcome to Spring Boot Dashboard!</h1>
-        <p>This is my first Spring Boot HTML page.</p>
-        <button class="btn btn-primary" onclick="alert('Hello Spring Boot!')">
-            Click Me
-        </button>
+        <!-- sidebar -->
+        <nav class="nav flex-column">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/dashboard">
+                        Products
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/settings">
+                        Settings
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">
+                        Profile
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    <!-- main -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Short Name</th>
+            <th scope="col">Type</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.shortName}"></td>
+            </tr>
+        </tbody>
+    </table>
+
     </section>
 </body>
 </html>
