@@ -32,6 +32,10 @@ public class User {
   @Column(nullable = false, unique = true, length = 256)
   private String emailAddress;
 
+  @ManyToOne
+  @JoinColumn(name = "department_id", nullable = false)
+  private Department department;
+
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
     name = "user_roles",

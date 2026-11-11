@@ -41,7 +41,13 @@
 
             <div>
                 <label>Department:</label><br />
-                <input type="text" name="organization" class="form-control" required/>
+                <select class="form-select" th:field="*{department}" required>
+                    <option value="" disabled selected hidden></option>
+                    <option th:each="dept : ${departments}"
+                            th:value="${dept.id}"
+                            th:text="${dept.name}">
+                    </option>
+                </select>
             </div>
 
 <!--            <div>-->

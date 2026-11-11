@@ -27,7 +27,8 @@ public class DepartmentInitializer {
             "Information Technology (IT)",
             "Legal",
             "Marketing",
-            "Sales"
+            "Sales",
+            "Other"
           };
           for (String name : departments)
             repository.save(new Department(name));
