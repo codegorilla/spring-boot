@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::section})}">
+<head>
+    <title>User Registration</title>
+</head>
+<body>
+    <section>
+        <h1>Create an Account</h1>
+
+        <div th:if="${param.error}">
+            Invalid username or password.
+        </div>
+
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+
+        <form style="max-width:240px;margin:auto" th:action="@{/register}" th:object="${user}" method="post">
+
+            <div>
+                <label>First Name:</label><br />
+                <input type="text" th:field="*{firstName}" class="form-control" required/>
+            </div>
+
+            <div>
+                <label>Last Name:</label><br />
+                <input type="text" th:field="*{lastName}" class="form-control" required/>
+            </div>
+
+            <div>
+                <label>Email Address:</label><br />
+                <input type="email" th:field="*{emailAddress}" class="form-control" required/>
+            </div>
+
+            <div>
+                <label>Organization:</label><br />
+                <input type="text" name="organization" class="form-control" required/>
+            </div>
+
+            <div>
+                <label>Department:</label><br />
+                <input type="text" name="organization" class="form-control" required/>
+            </div>
+
+<!--            <div>-->
+<!--                <label>Sponsor's Email Address:</label><br />-->
+<!--                <input type="email" th:field="*{emailAddress}" class="form-control" required/>-->
+<!--            </div>-->
+
+            <div class="d-grid mt-3">
+            <button class="btn btn-large btn-primary" type="submit">Register</button>
+            </div>
+        </form>
+    </section>
+</body>
+</html>

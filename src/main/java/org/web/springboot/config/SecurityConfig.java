@@ -10,7 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
   private static final String[] PUBLIC_URLS = {
-    "/", "/login", "/css/**", "/images/**", "/js/**"
+    "/", "/login", "/register", "/css/**", "/images/**", "/js/**"
   };
 
   @Bean
