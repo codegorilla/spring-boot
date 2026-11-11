@@ -1,18 +1,23 @@
 package org.web.springboot.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "products")
+@Getter
 public class Product {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Setter
   @Column(nullable = false)
   private String name;
 
+  @Setter
   @Column(length = 32)
   private String shortName;
 
@@ -29,26 +34,6 @@ public class Product {
 
   public Product (String name) {
     this.name = name;
-  }
-
-  public Long getId () {
-    return id;
-  }
-
-  public String getName () {
-    return name;
-  }
-
-  public void setName (String name) {
-    this.name = name;
-  }
-
-  public String getShortName () {
-    return shortName;
-  }
-
-  public void setShortName (String shortName) {
-    this.shortName = shortName;
   }
 
   public ProductType getProductType () {
