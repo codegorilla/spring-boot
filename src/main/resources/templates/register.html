@@ -17,31 +17,42 @@
             You have been logged out.
         </div>
 
-        <form style="max-width:240px;margin:auto" th:action="@{/register}" th:object="${user}" method="post">
+        <form style="max-width:360px;margin:auto" th:action="@{/register}" th:object="${user}" method="post">
 
-            <div>
-                <label>First Name:</label><br />
-                <input type="text" th:field="*{firstName}" class="form-control" required/>
+            <!-- First Name and Last Name -->
+            <div class="row g-3 mb-3">
+                <div class="col-6">
+                    <label for="firstName" class="form-label">
+                        First Name<span class="text-danger ms-1">*</span>
+                    </label>
+                    <input type="text" th:field="*{firstName}" class="form-control" id="firstName" required/>
+                </div>
+                <div class="col-6">
+                    <label for="lastName" class="form-label">
+                        Last Name<span class="text-danger ms-1">*</span>
+                    </label>
+                    <input type="text" th:field="*{lastName}" class="form-control" id="lastName" required/>
+                </div>
             </div>
 
-            <div>
-                <label>Last Name:</label><br />
-                <input type="text" th:field="*{lastName}" class="form-control" required/>
+            <!-- Email Address -->
+            <div class="mb-3">
+                <label for="email" class="form-label">
+                    Email Address<span class="text-danger ms-1">*</span>
+                </label>
+                <input type="email" th:field="*{emailAddress}" class="form-control" id="email" required/>
             </div>
 
-            <div>
-                <label>Email Address:</label><br />
-                <input type="email" th:field="*{emailAddress}" class="form-control" required/>
+            <!-- organization-->
+            <div class="mb-3">
+                <label for="organization" class="form-label">Organization</label>
+                <input type="text" th:field="*{organization}" class="form-control" id="organization" required/>
             </div>
 
-            <div>
-                <label>Organization:</label><br />
-                <input type="text" name="organization" class="form-control" required/>
-            </div>
-
-            <div>
-                <label>Department:</label><br />
-                <select class="form-select" th:field="*{department}" required>
+            <!-- department -->
+            <div class="mb-3">
+                <label for="department" class="form-label">Department</label>
+                <select class="form-select" id="department" th:field="*{department}" required>
                     <option value="" disabled selected hidden></option>
                     <option th:each="dept : ${departments}"
                             th:value="${dept.id}"
@@ -50,13 +61,8 @@
                 </select>
             </div>
 
-<!--            <div>-->
-<!--                <label>Sponsor's Email Address:</label><br />-->
-<!--                <input type="email" th:field="*{emailAddress}" class="form-control" required/>-->
-<!--            </div>-->
-
-            <div class="d-grid mt-3">
-            <button class="btn btn-large btn-primary" type="submit">Register</button>
+            <div class="d-grid mt-5">
+                <button class="btn btn-large btn-primary" type="submit">Register</button>
             </div>
         </form>
     </section>

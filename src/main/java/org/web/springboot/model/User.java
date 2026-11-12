@@ -32,6 +32,10 @@ public class User {
   @Column(nullable = false, unique = true, length = 256)
   private String emailAddress;
 
+  @Setter
+  @Column(nullable = false, length = 256)
+  private String organization;
+
   @ManyToOne
   @JoinColumn(name = "department_id", nullable = false)
   private Department department;
