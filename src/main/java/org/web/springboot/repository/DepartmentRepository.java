@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import org.web.springboot.model.Department;
 
 @Repository
-public interface DepartmentRepo extends JpaRepository<Department, Long> {
+public interface DepartmentRepository extends JpaRepository<Department, Long> {
 
 }

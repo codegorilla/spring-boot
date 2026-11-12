@@ -6,13 +6,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import org.web.springboot.model.Department;
-import org.web.springboot.repository.DepartmentRepo;
+import org.web.springboot.repository.DepartmentRepository;
 
 @Configuration
 public class DepartmentInitializer {
 
   @Bean
-  CommandLineRunner initializeDepartments(DepartmentRepo repository) {
+  CommandLineRunner initializeDepartments(DepartmentRepository repository) {
 
     var args = new CommandLineRunner() {
       @Override

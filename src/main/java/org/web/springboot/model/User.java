@@ -2,20 +2,19 @@ package org.web.springboot.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
 @Getter
+@NoArgsConstructor
 public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  
+
   @Setter
   @Column(nullable = false)
   private String firstName;
@@ -23,6 +22,8 @@ public class User {
   @Setter
   @Column(nullable = false)
   private String lastName;
+
+  // TBD: Investigate using @Size for form validation
 
   @Setter
   @Column(nullable = false, unique = true, length = 256)
@@ -32,11 +33,15 @@ public class User {
   @Column(nullable = false, length = 256)
   private String organization;
 
-//  @Setter
-//  @ManyToOne
-//  @JoinColumn(name = "department_id", nullable = false)
-//  private Department department;
-//
+  @Transient
+  @Setter
+  private Long departmentId;
+
+  @Setter
+  @ManyToOne
+  @JoinColumn(name = "department_id", nullable = false)
+  private Department department;
+
 //  @ManyToMany(fetch = FetchType.EAGER)
 //  @JoinTable(
 //    name = "user_roles",
@@ -45,10 +50,9 @@ public class User {
 //  )
 //  private final Set<Role> roles = new HashSet<>();
 
-
   @Override
   public String toString () {
-    return "User(%d, %s, %s)".formatted(id, firstName, lastName); //, department);
+    return "User(%d, %s, %s, %s)".formatted(id, firstName, lastName, department);
   }
 
 }

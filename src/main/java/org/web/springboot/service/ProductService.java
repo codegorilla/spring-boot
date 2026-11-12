@@ -3,7 +3,7 @@ package org.web.springboot.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.web.springboot.model.Product;
-import org.web.springboot.repository.ProductRepo;
+import org.web.springboot.repository.ProductRepository;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class ProductService {
 
   @Autowired
-  private ProductRepo repo;
+  private ProductRepository repo;
 
   public List<Product> getProducts () {
     return repo.findAll();

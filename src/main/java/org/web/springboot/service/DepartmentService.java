@@ -1,10 +1,10 @@
 package org.web.springboot.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.web.springboot.model.Department;
-import org.web.springboot.model.Product;
-import org.web.springboot.repository.DepartmentRepo;
+import org.web.springboot.repository.DepartmentRepository;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,26 +12,14 @@ import java.util.List;
 @Service
 public class DepartmentService {
 
-  @Autowired
-  private DepartmentRepo repo;
+  private final DepartmentRepository repository;
 
-  private final List<Department> departments = Arrays.asList(
-    new Department("Customer Service"),
-    new Department("Finance"),
-    new Department("Human Resources"),
-    new Department("IT"),
-    new Department("Legal"),
-    new Department("Marketing"),
-    new Department("Research"),
-    new Department("Sales")
-  );
-  
-  public List<Department> getDepartments () {
-    return repo.findAll();
+  public DepartmentService (DepartmentRepository repository) {
+    this.repository = repository;
   }
 
-  public void setDepartments (List<Department> departments) {
-    // Do something
+  public List<Department> getDepartments () {
+    return repository.findAll();
   }
 
 }

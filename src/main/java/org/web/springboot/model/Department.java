@@ -2,6 +2,7 @@ package org.web.springboot.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 // This could potentially just be an enum rather than a whole
@@ -11,6 +12,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "departments")
 @Getter
+@NoArgsConstructor
 public class Department {
 
   @Id
@@ -20,14 +22,7 @@ public class Department {
   @Setter
   @Column(nullable = false)
   private String name;
-
-  public Department () {}
-
-  public Department (Long id, String name) {
-    this.id = id;
-    this.name = name;
-  }
-
+  
   public Department (String name) {
     this.name = name;
   }

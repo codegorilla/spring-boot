@@ -50,16 +50,16 @@
             </div>
 
             <!-- department -->
-<!--            <div class="mb-3">-->
-<!--                <label for="department" class="form-label">Department</label>-->
-<!--                <select class="form-select" id="department" th:field="*{department.id}" required>-->
-<!--                    <option value="" disabled selected hidden></option>-->
-<!--                    <option th:each="dept : ${departments}"-->
-<!--                            th:value="${dept.id}"-->
-<!--                            th:text="${dept.name}">-->
-<!--                    </option>-->
-<!--                </select>-->
-<!--            </div>-->
+            <div class="mb-3">
+                <label for="department" class="form-label">Department</label>
+                <select class="form-select" id="department" th:field="*{departmentId}" required>
+                    <option value="" disabled selected hidden></option>
+                    <option th:each="dept : ${departments}"
+                            th:value="${dept.id}"
+                            th:text="${dept.name}">
+                    </option>
+                </select>
+            </div>
 
             <div class="d-grid mt-4">
                 <button class="btn btn-large btn-primary" type="submit">Register</button>
