@@ -33,6 +33,7 @@ public class User {
   @Column(nullable = false, length = 256)
   private String organization;
 
+  // This is a workaround instead of using DTO pattern
   @Transient
   @Setter
   private Long departmentId;
