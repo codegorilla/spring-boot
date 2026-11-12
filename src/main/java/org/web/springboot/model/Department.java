@@ -32,5 +32,9 @@ public class Department {
     this.name = name;
   }
 
+  @Override
+  public String toString () {
+    return "Department(%d, %s)".formatted(id, name);
+  }
 
 }

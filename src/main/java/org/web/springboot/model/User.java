@@ -15,11 +15,7 @@ public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
-  @Setter
-  @Column(nullable = false, unique = true)
-  private String username;
-
+  
   @Setter
   @Column(nullable = false)
   private String firstName;
@@ -36,16 +32,23 @@ public class User {
   @Column(nullable = false, length = 256)
   private String organization;
 
-  @ManyToOne
-  @JoinColumn(name = "department_id", nullable = false)
-  private Department department;
+//  @Setter
+//  @ManyToOne
+//  @JoinColumn(name = "department_id", nullable = false)
+//  private Department department;
+//
+//  @ManyToMany(fetch = FetchType.EAGER)
+//  @JoinTable(
+//    name = "user_roles",
+//    joinColumns = @JoinColumn(name = "user_id"),
+//    inverseJoinColumns = @JoinColumn(name = "role_id")
+//  )
+//  private final Set<Role> roles = new HashSet<>();
 
-  @ManyToMany(fetch = FetchType.EAGER)
-  @JoinTable(
-    name = "user_roles",
-    joinColumns = @JoinColumn(name = "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "role_id")
-  )
-  private final Set<Role> roles = new HashSet<>();
+
+  @Override
+  public String toString () {
+    return "User(%d, %s, %s)".formatted(id, firstName, lastName); //, department);
+  }
 
 }
