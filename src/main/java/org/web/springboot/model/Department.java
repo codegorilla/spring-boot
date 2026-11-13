@@ -20,16 +20,16 @@ public class Department {
   private Long id;
 
   @Setter
-  @Column(nullable = false)
+  @Column(nullable = false, unique = true)
   private String name;
-  
+
   public Department (String name) {
     this.name = name;
   }
 
   @Override
   public String toString () {
-    return "Department(%d, %s)".formatted(id, name);
+    return "Department{id=%d, name=%s}".formatted(id, name);
   }
 
 }

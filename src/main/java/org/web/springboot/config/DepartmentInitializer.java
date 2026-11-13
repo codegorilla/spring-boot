@@ -1,7 +1,6 @@
 package org.web.springboot.config;
 
 import org.springframework.boot.CommandLineRunner;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,7 +11,7 @@ import org.web.springboot.repository.DepartmentRepository;
 public class DepartmentInitializer {
 
   @Bean
-  CommandLineRunner initializeDepartments(DepartmentRepository repository) {
+  CommandLineRunner initializeDepartments (DepartmentRepository repository) {
 
     var args = new CommandLineRunner() {
       @Override
@@ -30,7 +29,7 @@ public class DepartmentInitializer {
             "Sales",
             "Other"
           };
-          for (String name : departments)
+          for (var name : departments)
             repository.save(new Department(name));
         }
       }

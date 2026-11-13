@@ -2,6 +2,7 @@ package org.web.springboot.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 // The permissions that roles impart are coded into the business
@@ -13,6 +14,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "roles")
 @Getter
+@NoArgsConstructor
 public class Role {
 
   @Id
@@ -22,5 +24,14 @@ public class Role {
   @Setter
   @Column(nullable = false, unique = true)
   private String name;
+
+  public Role (String name) {
+    this.name = name;
+  }
+
+  @Override
+  public String toString () {
+    return "Role{id=%d, name=%s}".formatted(id, name);
+  }
 
 }

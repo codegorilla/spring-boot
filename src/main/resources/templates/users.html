@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::section})}">
+<head>
+    <title>Users</title>
+</head>
+<body>
+    <section>
+        <!-- sidebar -->
+        <nav class="nav flex-column">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/dashboard">
+                        Products
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/settings">
+                        Settings
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">
+                        Profile
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    <!-- main -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Organization</th>
+            <th scope="col">Department</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.emailAddress}"></td>
+                <td th:text="${user.organization}"></td>
+                <td th:text="${user.department.name}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    </section>
+</body>
+</html>
