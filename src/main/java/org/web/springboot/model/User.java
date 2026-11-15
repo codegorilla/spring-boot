@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.context.annotation.Profile;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -29,19 +33,12 @@ public class User {
   @Column(nullable = false, unique = true, length = 256)
   private String emailAddress;
 
-  @Setter
-  @Column(nullable = false, length = 256)
-  private String organization;
-
-  // This is a workaround instead of using DTO pattern
-  @Transient
-  @Setter
-  private Long departmentId;
+  // TBD: Need to add enabled/disabled, creation time, last login, etc. fields
 
   @Setter
-  @ManyToOne
-  @JoinColumn(name = "department_id", nullable = false)
-  private Department department;
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "profile_id", unique = true, nullable = false)
+  private UserProfile userProfile;
 
 //  @ManyToMany(fetch = FetchType.EAGER)
 //  @JoinTable(
@@ -53,7 +50,10 @@ public class User {
 
   @Override
   public String toString () {
-    return "User(%d, %s, %s, %s)".formatted(id, firstName, lastName, department);
+    // TBD: Roles is a set, not a list; so for the purpose of
+    // printing, we won't necessarily be able to get a specific item
+    // by index without first converting to a list and sorting first.
+    return "User(%d, %s, %s, %s)".formatted(id, firstName, lastName, emailAddress);
   }
 
 }

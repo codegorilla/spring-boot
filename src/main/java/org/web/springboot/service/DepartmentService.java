@@ -1,7 +1,7 @@
 package org.web.springboot.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.web.springboot.model.Department;
 import org.web.springboot.repository.DepartmentRepository;
@@ -19,7 +19,19 @@ public class DepartmentService {
   }
 
   public List<Department> getDepartments () {
-    return repository.findAll();
+    return repository.findAll(Sort.by("name"));
   }
 
+//  public List<Department> findAllSorted () {
+//    return repository.findAll(Sort.by("name"));
+//  }
+
+  // CAI had this, not sure if we need it
+//  public Department getById (Long id) {
+//    return repository.findById(id)
+//      .orElseThrow(() -> new IllegalArgumentException("Unknown department: " + id));
+//  }
+
 }
+
+

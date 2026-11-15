@@ -7,44 +7,38 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.web.springboot.model.User;
-import org.web.springboot.repository.DepartmentRepository;
+import org.web.springboot.dto.RegistrationForm;
 import org.web.springboot.service.DepartmentService;
-import org.web.springboot.service.UserService;
+import org.web.springboot.service.RegistrationService;
 
 @Controller
 public class RegistrationController {
 
   private final DepartmentService departmentService;
-  private final UserService userService;
+  private final RegistrationService registrationService;
 
-  public RegistrationController (DepartmentService departmentService, UserService userService) {
+  public RegistrationController (DepartmentService departmentService, RegistrationService registrationService) {
     this.departmentService = departmentService;
-    this.userService = userService;
+    this.registrationService = registrationService;
   }
 
   @GetMapping("/register")
   public String registerForm (Model model) {
-    model.addAttribute("user", new User());
+    model.addAttribute("form", new RegistrationForm());
     model.addAttribute("departments", departmentService.getDepartments());
     return "register";
   }
 
   // TBD: Research what @Valid does and if it should be used
+  // redirect after POST so a refresh doesn't resubmit
 
   @PostMapping("/register")
-  public String registerUser (@ModelAttribute("user") User user) { //, BindingResult result, Model model) {
-//    if (result.hasErrors())
-//      return "register";
-
-    System.out.println("*****");
-    System.out.println("dept id is" +  user.getDepartmentId());
-    System.out.println(user.toString());
-    System.out.println("*****");
-
-    //Department department = departmentRepo.findById(user.getDepartment().getId()).get();
-    userService.registerUser(user);
-    return "login";
+  public String registerUser (@Valid @ModelAttribute("form") RegistrationForm form, BindingResult result) {
+    if (result.hasErrors())
+      return "register";
+    registrationService.register(form);
+//    return "login";
+    return "redirect:/register/success";
   }
 
 }

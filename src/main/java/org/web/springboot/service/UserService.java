@@ -23,8 +23,9 @@ public class UserService {
   // TBD: Do some error handling including using orElseThrow
 
   public User registerUser (User user) {
-    Department dept = departmentRepository.findById(user.getDepartmentId()).get();
-    user.setDepartment(dept);
+    // TBD: Fix because I moved department info to a separate user profile entity
+//    Department dept = departmentRepository.findById(user.getDepartmentId()).get();
+//    user.setDepartment(dept);
     return userRepository.save(user);
   }
 
