@@ -38,9 +38,7 @@ public class RegistrationController {
       return "register";
     }
     registrationService.register(form);
-  // Research: redirect after POST so a refresh doesn't resubmit
-//    return "login";
-    System.out.println("GOT HERE ERRORS FALSE");
+    // Redirect after POST so a refresh doesn't resubmit
     return "redirect:/register/success";
   }
 
