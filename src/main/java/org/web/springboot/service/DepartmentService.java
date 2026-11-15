@@ -1,12 +1,10 @@
 package org.web.springboot.service;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.web.springboot.model.Department;
 import org.web.springboot.repository.DepartmentRepository;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Service
