@@ -1,7 +1,7 @@
 package org.web.springboot.service;
 
 import org.springframework.stereotype.Service;
-import org.web.springboot.dto.UserRegistrationForm;
+import org.web.springboot.dto.RegistrationForm;
 import org.web.springboot.model.User;
 import org.web.springboot.model.UserProfile;
 import org.web.springboot.repository.DepartmentRepository;
@@ -18,7 +18,7 @@ public class RegistrationService {
     this.departmentRepository = departmentRepository;
   }
 
-  public User register (UserRegistrationForm form) {
+  public User register (RegistrationForm form) {
     var department = departmentRepository
       .findById(form.getDepartmentId())
       .orElseThrow(() -> new IllegalArgumentException("Unknown department"));

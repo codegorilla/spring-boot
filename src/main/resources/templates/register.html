@@ -17,7 +17,7 @@
             You have been logged out.
         </div>
 
-        <form style="max-width:360px;margin:auto" th:action="@{/register}" th:object="${user}" method="post">
+        <form style="max-width:360px;margin:auto" th:action="@{/register}" th:object="${form}" method="post">
 
             <!-- First Name and Last Name -->
             <div class="row g-3 mb-3">
@@ -41,25 +41,33 @@
                     Email Address<span class="text-danger ms-1">*</span>
                 </label>
                 <input type="email" th:field="*{emailAddress}" class="form-control" id="email" required/>
+                <span th:errors="*{emailAddress}"></span>
             </div>
 
+<!--            <input type="email" th:field="*{emailAddress}" th:errorclass="is-invalid"/> -->
+<!--            <span th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}" class="error"></span> -->
+
+<!--            th:errorclass adds a CSS class to the input only when the field has errors, which is handy for a red border.
+                The th:if check is optional, since th:errors already removes the span when there are no errors, but you’ll often see it in examples.
+                Use it when you want a wrapper element to appear only when there’s an error. -->
+
             <!-- organization-->
-<!--            <div class="mb-3">-->
-<!--                <label for="organization" class="form-label">Organization</label>-->
-<!--                <input type="text" th:field="*{organization}" class="form-control" id="organization" required/>-->
-<!--            </div>-->
+            <div class="mb-3">
+                <label for="organization" class="form-label">Organization</label>
+                <input type="text" th:field="*{organization}" class="form-control" id="organization" required/>
+            </div>
 
             <!-- department -->
-<!--            <div class="mb-3">-->
-<!--                <label for="department" class="form-label">Department</label>-->
-<!--                <select class="form-select" id="department" th:field="*{departmentId}" required>-->
-<!--                    <option value="" disabled selected hidden></option>-->
-<!--                    <option th:each="dept : ${departments}"-->
-<!--                            th:value="${dept.id}"-->
-<!--                            th:text="${dept.name}">-->
-<!--                    </option>-->
-<!--                </select>-->
-<!--            </div>-->
+            <div class="mb-3">
+                <label for="department" class="form-label">Department</label>
+                <select class="form-select" id="department" th:field="*{departmentId}" required>
+                    <option value="" disabled selected hidden></option>
+                    <option th:each="dept : ${departments}"
+                            th:value="${dept.id}"
+                            th:text="${dept.name}">
+                    </option>
+                </select>
+            </div>
 
             <div class="d-grid mt-4">
                 <button class="btn btn-large btn-primary" type="submit">Register</button>

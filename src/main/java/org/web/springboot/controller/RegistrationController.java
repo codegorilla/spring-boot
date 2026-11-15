@@ -28,15 +28,16 @@ public class RegistrationController {
     model.addAttribute("departments", departmentService.getDepartments());
     return "register";
   }
-
-  // TBD: Research what @Valid does and if it should be used
-  // redirect after POST so a refresh doesn't resubmit
-
+  
   @PostMapping("/register")
-  public String registerUser (@Valid @ModelAttribute("form") RegistrationForm form, BindingResult result) {
-    if (result.hasErrors())
+  public String registerUser (@Valid @ModelAttribute("form") RegistrationForm form, BindingResult result, Model model) {
+    if (result.hasErrors()) {
+      model.addAttribute("departments", departmentService.getDepartments());
+      System.out.println(result.hasErrors());
       return "register";
+    }
     registrationService.register(form);
+  // Research: redirect after POST so a refresh doesn't resubmit
 //    return "login";
     return "redirect:/register/success";
   }
