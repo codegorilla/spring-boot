@@ -1,6 +1,5 @@
 package org.web.springboot.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.web.springboot.model.Department;
 import org.web.springboot.model.User;
@@ -12,6 +11,7 @@ import java.util.List;
 @Service
 public class UserService {
 
+  // TBD: Might not need department repository
   private final DepartmentRepository departmentRepository;
   private final UserRepository userRepository;
 
@@ -20,17 +20,17 @@ public class UserService {
     this.departmentRepository = departmentRepository;
   }
 
-  // TBD: Do some error handling including using orElseThrow
-
   public User registerUser (User user) {
-    // TBD: Fix because I moved department info to a separate user profile entity
-//    Department dept = departmentRepository.findById(user.getDepartmentId()).get();
-//    user.setDepartment(dept);
     return userRepository.save(user);
   }
 
   public List<User> getUsers () {
     return userRepository.findAll();
+  }
+
+  public User getUser (Long id) {
+    return userRepository.findById(id)
+      .orElseThrow(() -> new IllegalArgumentException("Unknown user: " + id));
   }
 
 }

@@ -34,7 +34,6 @@ public class RegistrationController {
     if (result.hasErrors()) {
       model.addAttribute("departments", departmentService.getDepartments());
       System.out.println(result.hasErrors());
-      System.out.println("GOT HERE ERRORS TRUE");
       return "register";
     }
     registrationService.register(form);
