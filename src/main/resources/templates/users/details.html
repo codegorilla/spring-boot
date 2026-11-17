@@ -42,6 +42,46 @@
             </ul>
         </div>
 
+        <div class="card shadow-sm">
+            <div class="card-header bg-body d-flex align-items-center gap-3 py-3">
+                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-semibold"
+                     style="width: 56px; height: 56px; font-size: 1.25rem;"
+                     th:text="|${#strings.substring(user.firstName,0,1)}${#strings.substring(user.lastName,0,1)}|">JD</div>
+                <div class="flex-grow-1">
+                    <h1 class="h4 mb-0" th:text="|${user.firstName} ${user.lastName}|">Jane Doe</h1>
+                    <div class="text-body-secondary small" th:text="${user.emailAddress}"></div>
+                </div>
+<!--                <span class="badge rounded-pill"-->
+<!--                      th:classappend="${user.active} ? 'text-bg-success' : 'text-bg-secondary'"-->
+<!--                      th:text="${user.active} ? 'Active' : 'Disabled'">Active</span>-->
+            </div>
+
+            <div class="card-body">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h2 class="h6 text-uppercase text-body-secondary">Organization</h2>
+                        <p class="mb-1"><i class="bi bi-building me-2"></i>
+                            <span th:text="${user.userProfile?.organization} ?: 'Not set'"></span></p>
+                        <p class="mb-0"><i class="bi bi-diagram-3 me-2"></i>
+                            <span th:text="${user.userProfile?.department?.name} ?: 'Not set'"></span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="h6 text-uppercase text-body-secondary">Account</h2>
+                        <p class="mb-1"><i class="bi bi-envelope me-2"></i>
+                            <a th:href="|mailto:${user.emailAddress}|" th:text="${user.emailAddress}"></a></p>
+<!--                        <p class="mb-0"><i class="bi bi-clock-history me-2"></i>-->
+<!--                            Last login:-->
+<!--                            <span th:text="${user.lastLogin != null} ? ${#temporals.format(user.lastLogin, 'MMM d, yyyy h:mm a')} : 'Never'"></span></p>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer bg-body d-flex gap-2">
+                <a th:href="@{/users/{id}/edit(id=${user.id})}" class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{/users}" class="btn btn-outline-secondary btn-sm">Back</a>
+            </div>
+        </div>
+
     <!-- main -->
 <!--    <table class="table">-->
 <!--        <thead>-->
