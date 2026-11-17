@@ -1,5 +1,6 @@
 package org.web.springboot.config;
 
+import com.vaadin.flow.spring.security.VaadinSecurityConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -20,6 +21,12 @@ public class SecurityConfig {
     configureLogin(http);
     configureLogout(http);
     configureH2Console(http);
+
+    // Then let Vaadin add its rules
+    http.with(VaadinSecurityConfigurer.vaadin(), configurer -> {
+      // later: configurer.loginView(LoginView.class);
+    });
+
     return http.build();
   }
 
@@ -27,8 +34,9 @@ public class SecurityConfig {
     http.authorizeHttpRequests(auth -> auth
       .requestMatchers(PUBLIC_URLS)
       .permitAll()
-      .anyRequest()
-      .authenticated()
+// Take these out to make room for Vaadin's security configurator
+//      .anyRequest()
+//      .authenticated()
     );
   }
 
