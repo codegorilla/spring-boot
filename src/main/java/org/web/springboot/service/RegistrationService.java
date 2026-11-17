@@ -26,6 +26,7 @@ public class RegistrationService {
     var userProfile = new UserProfile();
     userProfile.setOrganization(form.getOrganization());
     userProfile.setDepartment(department);
+    userProfile.setJobTitle(form.getJobTitle());
 
     var user = new User();
     user.setFirstName(form.getFirstName());

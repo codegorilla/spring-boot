@@ -18,10 +18,13 @@ public class UserProfile {
   @Setter
   @Column(nullable = false, length = 256)
   private String organization;
-  
+
   @Setter
   @ManyToOne
   @JoinColumn(name = "department_id", nullable = false)
   private Department department;
 
+  @Setter
+  @Column(length = 256)
+  private String jobTitle;
 }

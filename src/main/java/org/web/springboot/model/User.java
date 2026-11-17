@@ -4,8 +4,12 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.context.annotation.Profile;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneOffset;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,7 +37,11 @@ public class User {
   @Column(nullable = false, unique = true, length = 256)
   private String emailAddress;
 
-  // TBD: Need to add enabled/disabled, creation time, last login, etc. fields
+  @CreationTimestamp
+  @Column(name = "created_at", nullable = false, updatable = false)
+  private Instant createdAt;
+
+  // TBD: Need to add enabled/disabled, last login, etc. fields
 
   @Setter
   @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
@@ -47,6 +55,10 @@ public class User {
 //    inverseJoinColumns = @JoinColumn(name = "role_id")
 //  )
 //  private final Set<Role> roles = new HashSet<>();
+
+  public LocalDate getCreatedDate() {
+    return createdAt == null ? null : createdAt.atOffset(ZoneOffset.UTC).toLocalDate();
+  }
 
   @Override
   public String toString () {

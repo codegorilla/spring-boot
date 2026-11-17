@@ -39,6 +39,7 @@
                             <th scope="col">Email Address</th>
                             <th scope="col">Organization</th>
                             <th scope="col">Department</th>
+                            <th scope="col">Job Title</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,6 +49,7 @@
                             <td th:text="${user.emailAddress}"></td>
                             <td th:text="${user.userProfile.organization}"></td>
                             <td th:text="${user.userProfile.department.name}"></td>
+                            <td th:text="${user.userProfile.jobTitle}"></td>
                             <td>
                                 <a th:href="@{/users/{id}(id=${user.id})}" class="btn btn-primary btn-sm">View</a>
                             </td>

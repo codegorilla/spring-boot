@@ -26,4 +26,7 @@ public class RegistrationForm {
 
   @NotNull
   private Long departmentId;
+
+  @NotBlank
+  private String jobTitle;
 }

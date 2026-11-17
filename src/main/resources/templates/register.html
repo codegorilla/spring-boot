@@ -51,13 +51,13 @@
                 The th:if check is optional, since th:errors already removes the span when there are no errors, but you’ll often see it in examples.
                 Use it when you want a wrapper element to appear only when there’s an error. -->
 
-            <!-- organization-->
+            <!-- Organization-->
             <div class="mb-3">
                 <label for="organization" class="form-label">Organization</label>
                 <input type="text" th:field="*{organization}" class="form-control" id="organization" required/>
             </div>
 
-            <!-- department -->
+            <!-- Department -->
             <div class="mb-3">
                 <label for="department" class="form-label">Department</label>
                 <select class="form-select" id="department" th:field="*{departmentId}" required>
@@ -67,6 +67,12 @@
                             th:text="${dept.name}">
                     </option>
                 </select>
+            </div>
+
+            <!-- Job Title -->
+            <div class="mb-3">
+                <label for="jobTitle" class="form-label">Job Title</label>
+                <input type="text" th:field="*{jobTitle}" class="form-control" id="jobTitle" required/>
             </div>
 
             <div class="d-grid mt-4">
