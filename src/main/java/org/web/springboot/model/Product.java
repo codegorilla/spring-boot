@@ -46,6 +46,6 @@ public class Product {
 
   @Override
   public String toString () {
-    return "Product(%d, %s)".formatted(id, name);
+    return "Product{id=%d, name=%s}".formatted(id, name);
   }
 }

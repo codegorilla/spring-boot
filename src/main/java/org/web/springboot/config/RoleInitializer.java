@@ -18,8 +18,8 @@ public class RoleInitializer {
       public void run (String... args) throws Exception {
         if (repository.count() == 0) {
           String[] roles = {
+            "Accountant",
             "Developer",
-            "Financial Manager",
             "Product Owner",
             "Security Analyst"
           };

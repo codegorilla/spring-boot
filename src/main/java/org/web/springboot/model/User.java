@@ -48,13 +48,13 @@ public class User {
   @JoinColumn(name = "profile_id", unique = true, nullable = false)
   private UserProfile userProfile;
 
-//  @ManyToMany(fetch = FetchType.EAGER)
-//  @JoinTable(
-//    name = "user_roles",
-//    joinColumns = @JoinColumn(name = "user_id"),
-//    inverseJoinColumns = @JoinColumn(name = "role_id")
-//  )
-//  private final Set<Role> roles = new HashSet<>();
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(
+    name = "user_roles",
+    joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "role_id")
+  )
+  private final Set<Role> roles = new HashSet<>();
 
   public LocalDate getCreatedDate() {
     return createdAt == null ? null : createdAt.atOffset(ZoneOffset.UTC).toLocalDate();
@@ -65,7 +65,7 @@ public class User {
     // TBD: Roles is a set, not a list; so for the purpose of
     // printing, we won't necessarily be able to get a specific item
     // by index without first converting to a list and sorting first.
-    return "User(%d, %s, %s, %s)".formatted(id, firstName, lastName, emailAddress);
+    return "User{id=%d, first=%s, last=%s, email=%s}".formatted(id, firstName, lastName, emailAddress);
   }
 
 }
