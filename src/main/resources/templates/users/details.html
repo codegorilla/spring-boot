@@ -84,8 +84,24 @@
             </div>
         </div>
 
-     <!-- roles -->
-     <!-- Put checkboxes here for each role -->
+        <!-- roles -->
+        <form th:action="@{/users/{id}/roles(id=${user.id})}" method="post" class="mt-4">
+            <h2 class="h5">Roles</h2>
+
+            <div class="form-check" th:each="role : ${allRoles}">
+                <input class="form-check-input" type="checkbox"
+                       name="roleIds"
+                       th:value="${role.id}"
+                       th:id="|role-${role.id}|"
+                       th:checked="${selectedRoleIds.contains(role.id)}">
+                <label class="form-check-label" th:for="|role-${role.id}|" th:text="${role.name}">ADMIN</label>
+            </div>
+
+            <div class="mt-3 d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a th:href="@{/users}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </form>
 
     </section>
 </body>
