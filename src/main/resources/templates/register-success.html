@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::section})}">
+      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::main})}">
 <head>
     <title>User Registration Successful</title>
 </head>
 <body>
-    <section>
+    <main>
         <h1>Registration successful.</h1>
 
         <div>
             <a th:href="@{/login}" class="btn btn-large btn-primary">Return to login page</a>
         </div>
-    </section>
+    </main>
 </body>
 </html>

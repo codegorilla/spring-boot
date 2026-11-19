@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::section})}">
+      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::main})}">
 <head>
     <title>Spring Boot Login</title>
 </head>
 <body>
-    <section>
+    <main>
         <h1>Login</h1>
 
         <div th:if="${param.error}">
@@ -33,6 +33,6 @@
             <button class="btn btn-large btn-primary" type="submit">Sign In</button>
             </div>
         </form>
-    </section>
+    </main>
 </body>
 </html>

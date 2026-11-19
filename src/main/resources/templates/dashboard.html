@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::section})}">
+      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::main})}">
 <head>
     <title>SB Dashboard</title>
 </head>
 <body>
-    <section>
+    <main>
         <!-- sidebar -->
         <nav class="nav flex-column">
             <ul class="nav flex-column">
@@ -47,6 +47,6 @@
         </tbody>
     </table>
 
-    </section>
+    </main>
 </body>
 </html>

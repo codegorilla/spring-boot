@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::section})}">
+      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::main})}">
 <head>
     <title>User Registration</title>
 </head>
 <body>
-    <section>
+    <main>
         <h1>Create an Account</h1>
 
         <div th:if="${param.error}">
@@ -79,6 +79,6 @@
                 <button class="btn btn-large btn-primary" type="submit">Register</button>
             </div>
         </form>
-    </section>
+    </main>
 </body>
 </html>

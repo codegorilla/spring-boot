@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::section})}">
+      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::main})}">
 <head>
     <title>Spring Boot Index</title>
 </head>
 <body>
-    <section>
+    <main>
         <h1>Welcome to Spring Boot Index!</h1>
         <p>This is my first Spring Boot HTML page.</p>
         <button class="btn btn-primary" onclick="alert('Hello Spring Boot!')">
             Click Me
         </button>
-    </section>
+    </main>
 </body>
 </html>
