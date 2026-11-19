@@ -17,8 +17,8 @@ public class ProductController {
 
   @GetMapping("/products")
   public String getProducts (Model model) {
-    model.addAttribute("users", productService.getProducts());
-    return "products";
+    model.addAttribute("products", productService.getProducts());
+    return "products/list";
 //    return "Here are your products!\n" +
 //      productService.getProducts().stream()
 //        .filter(product -> product.getId() > 1)
