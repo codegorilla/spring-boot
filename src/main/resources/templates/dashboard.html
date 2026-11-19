@@ -6,46 +6,26 @@
     <title>SB Dashboard</title>
 </head>
 <body>
-    <main>
-        <!-- sidebar -->
-        <nav class="nav flex-column">
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/dashboard">
-                        Products
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/settings">
-                        Settings
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/profile">
-                        Profile
-                    </a>
-                </li>
-            </ul>
-        </nav>
+    <main class="flex-grow-1 overflow-auto p-4">
 
-    <!-- main -->
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Short Name</th>
-            <th scope="col">Type</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr th:each="product : ${products}">
-                <td th:text="${product.id}"></td>
-                <td th:text="${product.name}"></td>
-                <td th:text="${product.shortName}"></td>
+        <!-- table -->
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Short Name</th>
+                <th scope="col">Type</th>
             </tr>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.id}"></td>
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.shortName}"></td>
+                </tr>
+            </tbody>
+        </table>
 
     </main>
 </body>
