@@ -35,6 +35,8 @@ public class MainController {
     return "Goodbye from Spring Boot!";
   }
 
+  // TBD: Move to login controller
+
   @GetMapping("/login")
   public String login () {
     return "login";

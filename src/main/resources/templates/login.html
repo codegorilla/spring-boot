@@ -1,38 +1,50 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::main})}">
+      th:replace="~{layout/plain :: myLayout(~{::title}, ~{::main})}">
 <head>
     <title>Spring Boot Login</title>
 </head>
 <body>
-    <main>
-        <h1>Login</h1>
+    <main class="card shadow-sm" style="width: 100%; max-width: 380px;">
+        <div class="card-body p-4">
 
-        <div th:if="${param.error}">
-            Invalid username or password.
+            <div class="text-center mb-4">
+                <img th:src="@{/images/logo.svg}" alt="My Portal" height="192">
+                <h1 class="h4 mt-3">Sign in</h1>
+            </div>
+
+            <div th:if="${param.error}" class="alert alert-danger">Invalid username or password.</div>
+            <div th:if="${param.logout}" class="alert alert-success">You have been signed out.</div>
+
+<!--            <h1>Login</h1>-->
+
+<!--            <div th:if="${param.error}">-->
+<!--                Invalid username or password.-->
+<!--            </div>-->
+
+<!--            <div th:if="${param.logout}">-->
+<!--                You have been logged out.-->
+<!--            </div>-->
+
+            <form style="max-width:360px;margin:auto" th:action="@{/login}" method="post">
+
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" id="username" required/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" required/>
+                </div>
+
+                <div class="d-grid mt-4">
+                <button class="btn btn-large btn-primary" type="submit">Sign In</button>
+                </div>
+            </form>
+
         </div>
-
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
-
-        <form style="max-width:360px;margin:auto" th:action="@{/login}" method="post">
-
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" name="username" class="form-control" id="username" required/>
-            </div>
-
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" id="password" required/>
-            </div>
-
-            <div class="d-grid mt-4">
-            <button class="btn btn-large btn-primary" type="submit">Sign In</button>
-            </div>
-        </form>
     </main>
 </body>
 </html>
