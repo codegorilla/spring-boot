@@ -17,16 +17,7 @@
             <div th:if="${param.error}" class="alert alert-danger">Invalid username or password.</div>
             <div th:if="${param.logout}" class="alert alert-success">You have been signed out.</div>
 
-<!--            <h1>Login</h1>-->
-
-<!--            <div th:if="${param.error}">-->
-<!--                Invalid username or password.-->
-<!--            </div>-->
-
-<!--            <div th:if="${param.logout}">-->
-<!--                You have been logged out.-->
-<!--            </div>-->
-
+            
             <form style="max-width:360px;margin:auto" th:action="@{/login}" method="post">
 
                 <div class="mb-3">
