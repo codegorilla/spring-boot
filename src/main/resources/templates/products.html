@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::main})}">
+<head>
+    <title>Products</title>
+</head>
+<body>
+    <main class="flex-grow-1 overflow-auto p-4">
+
+        <h2>Products</h2>
+
+        <!-- table -->
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Short Name</th>
+                    <th scope="col">Type</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="product : ${products}">
+                        <td th:text="${product.name}"></td>
+                        <td th:text="${product.shortName}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+</body>
+</html>

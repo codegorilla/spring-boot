@@ -18,17 +18,6 @@ public class MainController {
     return "index";
   }
 
-  @GetMapping("/products")
-  @ResponseBody
-  public String products () {
-    var x = productService.getProducts();
-    System.out.println(x);
-    return "Here are your products!\n" +
-    productService.getProducts().stream()
-      .filter(product -> product.getId() > 1)
-      .toList();
-  }
-
   @GetMapping("/goodbye")
   @ResponseBody
   public String goodbyeWorld() {

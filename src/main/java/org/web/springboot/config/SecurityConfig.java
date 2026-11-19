@@ -35,7 +35,7 @@ public class SecurityConfig {
   private void configureLogin (HttpSecurity http) throws Exception {
     http.formLogin(form -> form
       .loginPage("/login")
-      .defaultSuccessUrl("/dashboard", true)
+      .defaultSuccessUrl("/products", true)
       .permitAll()
     );
   }
