@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: mainLayout(~{::title}, ~{::main})}">
+<head>
+    <title>Create Product</title>
+</head>
+<body>
+    <main class="flex-grow-1 overflow-auto p-4">
+
+        <h1 class="h3">Create Product</h1>
+
+        <form style="max-width:360px;margin:auto" th:action="@{/register}" th:object="${form}" method="post">
+
+            <!-- Name -->
+            <div class="mb-3">
+                <label for="name" class="form-label">
+                    Name<span class="text-danger ms-1">*</span>
+                </label>
+                <input type="text" th:field="*{name}" class="form-control" id="name" required/>
+            </div>
+
+            <!-- Abbreviation, acronym, or other shortened version of the full product name -->
+
+            <!-- Short Name -->
+            <div class="mb-3">
+                <label for="shortName" class="form-label">
+                    Short Name<span class="text-danger ms-1">*</span>
+                </label>
+                <input type="text" th:field="*{shortName}" class="form-control" id="shortName" required/>
+                <span th:errors="*{shortName}"></span>
+            </div>
+
+            <!-- Type -->
+            <div class="mb-3">
+                <label for="type" class="form-label">
+                    Type<span class="text-danger ms-1">*</span>
+                </label>
+                <input type="text" th:field="*{type}" class="form-control" id="type" required/>
+                <span th:errors="*{type}"></span>
+            </div>
+
+            <div class="d-grid mt-4 mb-3">
+                <a th:href="@{/products}" class="btn btn-primary">Cancel</a>
+                <button class="btn btn-large btn-primary" type="submit">Create</button>
+            </div>
+
+        </form>
+
+    </main>
+</body>
+</html>

@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.web.springboot.dto.CreateProductForm;
+import org.web.springboot.dto.RegistrationForm;
 import org.web.springboot.service.ProductService;
 
 @Controller
@@ -29,6 +31,12 @@ public class ProductController {
   public String getProduct (@PathVariable Long id, Model model) {
 //    var product = productService.getProduct(id);
     return "products/details";
+  }
+
+  @GetMapping("/products/create")
+  public String createProduct (Model model) {
+    model.addAttribute("form", new CreateProductForm());
+    return "products/create";
   }
 
 }

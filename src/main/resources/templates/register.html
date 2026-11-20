@@ -37,15 +37,12 @@
 
             <!-- Email Address -->
             <div class="mb-3">
-                <label for="email" class="form-label">
+                <label for="emailAddress" class="form-label">
                     Email Address<span class="text-danger ms-1">*</span>
                 </label>
-                <input type="email" th:field="*{emailAddress}" class="form-control" id="email" required/>
+                <input type="email" th:field="*{emailAddress}" class="form-control" id="emailAddress" required/>
                 <span th:errors="*{emailAddress}"></span>
             </div>
-
-<!--            <input type="email" th:field="*{emailAddress}" th:errorclass="is-invalid"/> -->
-<!--            <span th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}" class="error"></span> -->
 
 <!--            th:errorclass adds a CSS class to the input only when the field has errors, which is handy for a red border.
                 The th:if check is optional, since th:errors already removes the span when there are no errors, but you’ll often see it in examples.

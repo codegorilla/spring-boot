@@ -8,9 +8,11 @@
 <body>
     <main class="flex-grow-1 overflow-auto p-4">
 
-        <h2>Products</h2>
-
-        <a th:href="@{/products}" class="btn btn-primary">Create</a>
+        <!-- header and button -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1 class="h3">Products</h1>
+            <a th:href="@{/products/create}" class="btn btn-primary">Create</a>
+        </div>
 
         <!-- table -->
         <div class="table-responsive">
